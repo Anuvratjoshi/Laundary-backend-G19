@@ -1,8 +1,9 @@
+const dotenv = require("dotenv");
+dotenv.config()
 const express = require('express');
 const app = express()
 const mongoose = require("mongoose")
 const cors = require('cors')
-const {MONG_URI} = require('./keys')
 const PORT = 5000
 
 
@@ -17,7 +18,7 @@ app.use(require('./routes/auth'))
 app.use(require('./routes/order'))
 
 
-mongoose.connect(MONG_URI,{
+mongoose.connect(process.env.MONG_URI,{
     useNewUrlParser:true,
     useUnifiedTopology:true
 });

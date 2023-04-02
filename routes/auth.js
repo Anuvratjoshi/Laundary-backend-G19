@@ -1,3 +1,5 @@
+const dotenv = require("dotenv");
+dotenv.config()
 const express = require('express')
 const mongoose = require('mongoose')
 
@@ -6,7 +8,6 @@ const router = express.Router()
 const User = mongoose.model("User")
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const {JWT_SECRET} =require("../keys")
 
 
 router.post("/register", (req, res) => {
@@ -67,7 +68,7 @@ router.post("/signin", (req, res) => {
                 .then(doMatch => {
                     if (doMatch) {
                         // return res.json({ message: "successfully logged in" })
-                        const token = jwt.sign({_id:savedUser._id},JWT_SECRET)
+                        const token = jwt.sign({_id:savedUser._id},process.env.JWT_SECRET)
 
                         const {_id,name,email,address,phone,city,district}=savedUser
                         res.json({token:token,user:{_id,name,email,address,phone,city,district}})
