@@ -21,9 +21,7 @@ const orderSchema = mongoose.Schema({
         type:ObjectId,
         ref:"User"
     }
-    // date:{
-    //     type: new Date()
-    // }
+   
 
 })
 mongoose.model("CreateOrder",orderSchema)
