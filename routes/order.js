@@ -47,7 +47,8 @@ router.post("/createorder", requireLogin, (req, res) => {
         quantity: req.body.quantity,
         service: req.body.service,
         price:totalPrice,
-        createdBy: req.user
+        createdBy: req.user,
+        date:new Date().toLocaleDateString()
     })
     // console.log(creareOrder)
     creareOrder.save()
