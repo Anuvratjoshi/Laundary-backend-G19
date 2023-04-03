@@ -20,6 +20,9 @@ const orderSchema = mongoose.Schema({
     createdBy:{
         type:ObjectId,
         ref:"User"
+    },
+    date:{
+        type:"String"
     }
    
 
